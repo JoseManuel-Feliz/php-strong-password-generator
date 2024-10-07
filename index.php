@@ -1,6 +1,6 @@
 <?php
 
-
+$password_length = isset($_POST['pass_length']) && !empty($_POST['pass_length']) ?$_POST['pass_length']:null;
 
 ?>
 
@@ -17,8 +17,12 @@
 <body>
 
     <main>
+
+        <h1>password lenght: <?= $password_length?> </h1>
+
         <form action="index.php" method="post">
-            <input type="number" min="7" max="100" value="8">
+            <label for="pass-lenght"></label>
+            <input type="number" id="pass-length" name="pass_length" min="7" max="100" value="8">
             <div>
                 <button type="submit">send</button>
                 <button type="reset">reset</button>
