@@ -1,3 +1,10 @@
+<?php
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,6 +15,17 @@
 </head>
 
 <body>
+
+    <main>
+        <form action="index.php" method="post">
+            <input type="number" min="7" max="100" value="8">
+            <div>
+                <button type="submit">send</button>
+                <button type="reset">reset</button>
+            </div>
+
+        </form>
+    </main>
 
 </body>
 
