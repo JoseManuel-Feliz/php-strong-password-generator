@@ -2,6 +2,11 @@
 
 $password_length = isset($_POST['pass_length']) && !empty($_POST['pass_length']) ?$_POST['pass_length']:null;
 
+function strong_passGenerator($password) {
+    $random_num = random_int($password,100);
+return $random_num;
+};
+
 ?>
 
 
@@ -19,6 +24,8 @@ $password_length = isset($_POST['pass_length']) && !empty($_POST['pass_length'])
     <main>
 
         <h1>password lenght: <?= $password_length?> </h1>
+
+        <p><?= strong_passGenerator($password_length)?></p>
 
         <form action="index.php" method="post">
             <label for="pass-lenght"></label>
