@@ -1,6 +1,10 @@
 <?php
+//IMPORT VARS AND FUNCTIONS FILE
 require_once __DIR__ . "/partials/vars.php";
 require_once __DIR__ . "/partials/functions.php";
+
+//SESSION START
+session_start();
 
 ?>
 
@@ -26,11 +30,13 @@ require_once __DIR__ . "/partials/functions.php";
                 <?= $validation_message ?>
             </p>
         </div>
-        <div>
 
-            <form action="index.php" method="post">
+        <div>
+            <form action="password.php" method="post">
+
                 <label for="pass-lenght">Lunghezza della password</label>
                 <input type="number" id="pass-length" name="pass_length" min="8" max="50" value="8">
+
                 <div>
                     <button type="submit">send</button>
                     <button type="reset">reset</button>
