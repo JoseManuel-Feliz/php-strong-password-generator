@@ -1,0 +1,18 @@
+body {
+    background-color: #001731;
+    color: #fff;
+}
+
+.bg-light-blue {
+    background-color: #CFF4FC;
+    max-width: 1000px;
+}
+
+.form-height {
+    height: 300px;
+}
+
+input[type^="number"] {
+    height: 50px;
+    max-width: 100px;
+}
