@@ -2,6 +2,12 @@
 
 $password_length = isset($_POST['pass_length']) && !empty($_POST['pass_length']) ? $_POST['pass_length'] : null;
 
+$validation_message = '';
+$max_length = 50;
+$min_length = 8;
+
+$password_length < $min_length ? $validation_message = 'La password deve avere una lunghezza minima di ' . $min_length . ' caratteri' : '';
+$password_length > $min_length ? $validation_message = 'La password deve avere una lunghezza maxima di ' . $max_length . ' caratteri' : '';
 function strong_passGenerator($length)
 {
     $chars = '?=?%&!\/.£$%//()?@òèù][)(<>/*-+:;0123456789abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
@@ -30,22 +36,27 @@ function strong_passGenerator($length)
 
     <main>
 
-        <h1>password lenght: <?= $password_length ?> </h1>
+        <h1>Strong Password Generator</h1>
 
-        <p>
-            Youy password is: <br>
-            <?= strong_passGenerator($password_length) ?>
-        </p>
+        <h3>Genera una password sicura</h3>
 
-        <form action="index.php" method="post">
-            <label for="pass-lenght"></label>
-            <input type="number" id="pass-length" name="pass_length" min="7" max="100" value="8">
-            <div>
-                <button type="submit">send</button>
-                <button type="reset">reset</button>
-            </div>
+        <div>
+            <p>
+                <?= $validation_message ?>
+            </p>
+        </div>
+        <div>
 
-        </form>
+            <form action="index.php" method="post">
+                <label for="pass-lenght">Lunghezza della password</label>
+                <input type="number" id="pass-length" name="pass_length" min="8" max="50" value="8">
+                <div>
+                    <button type="submit">send</button>
+                    <button type="reset">reset</button>
+                </div>
+
+            </form>
+        </div>
     </main>
 
 </body>
