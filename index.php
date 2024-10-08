@@ -1,28 +1,21 @@
 <?php
 
-$password_length = isset($_POST['pass_length']) && !empty($_POST['pass_length']) ?$_POST['pass_length']:null;
+$password_length = isset($_POST['pass_length']) && !empty($_POST['pass_length']) ? $_POST['pass_length'] : null;
 
-//var_dump (strlen($chars));
-function strong_passGenerator($password) {
-    $strong_pass='';
-    $chars=[
-    $numers_chars = 0123456789; 
-    $specials_chars ="?=?%&!\/.£$%//()?@òèù][)(<>/*-+:;"
-    $lower_case_Chars = "abcdefghijklmnñopqrstuvwxyz";
-    $upper_case_Chars = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-    ];
-    $random_num = random_int($password,50);
-    for($i=0;$i<$password;$i++){
-        $strong_pass .=$chars[$random_num+$i];
-        !str_contains($chars, $strong_pass) ? $strong_pass .=$chars[$random_num%$i*$random_num]: '';
-    };
-    return [$random_num,$strong_pass];
-};
+function strong_passGenerator($length)
+{
+    $chars = '?=?%&!\/.£$%//()?@òèù][)(<>/*-+:;0123456789abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
+    $strong_pass = array();
+    $chars_length = strlen($chars) - 1;
+    for ($i = 0; $i < $length; $i++) {
+        $j = rand(0, $chars_length);
+        $strong_pass[] = $chars[$j];
+    }
+    return implode($strong_pass);
+}
 
-var_dump(strong_passGenerator($password_length))
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,9 +30,12 @@ var_dump(strong_passGenerator($password_length))
 
     <main>
 
-        <h1>password lenght: <?= $password_length?> </h1>
+        <h1>password lenght: <?= $password_length ?> </h1>
 
-        <p><?= strong_passGenerator($password_length)?></p>
+        <p>
+            Youy password is: <br>
+            <?= strong_passGenerator($password_length) ?>
+        </p>
 
         <form action="index.php" method="post">
             <label for="pass-lenght"></label>
