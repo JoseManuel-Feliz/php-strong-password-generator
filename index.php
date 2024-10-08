@@ -1,25 +1,6 @@
 <?php
-
-$password_length = isset($_POST['pass_length']) && !empty($_POST['pass_length']) ? $_POST['pass_length'] : null;
-
-$validation_message = '';
-$max_length = 50;
-$min_length = 8;
-
-$password_length < $min_length ? $validation_message = 'La password deve avere una lunghezza minima di ' . $min_length . ' caratteri' : '';
-$password_length > $min_length ? $validation_message = 'La password deve avere una lunghezza maxima di ' . $max_length . ' caratteri' : '';
-function strong_passGenerator($length)
-{
-    $chars = '?=?%&!\/.£$%//()?@òèù][)(<>/*-+:;0123456789abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ';
-    $strong_pass = array();
-    $chars_length = strlen($chars) - 1;
-    for ($i = 0; $i < $length; $i++) {
-        $j = rand(0, $chars_length);
-        $strong_pass[] = $chars[$j];
-    }
-    return implode($strong_pass);
-}
-
+require_once __DIR__ . "/partials/vars.php";
+require_once __DIR__ . "/partials/functions.php";
 
 ?>
 
